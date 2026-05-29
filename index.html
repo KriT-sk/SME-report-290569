@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานกิจกรรมห้องเรียนพิเศษ SME ม.ต้น</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kanit & Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .font-header {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* A4 Page Styling for Web Preview */
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        /* Print Configuration */
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .a4-page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                page-break-after: always;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body class="py-6 no-scrollbar">
+
+    <!-- Control Panel (Non-printable) -->
+    <div class="max-w-[210mm] mx-auto mb-4 px-4 py-3 bg-white/80 backdrop-blur rounded-xl shadow-md border border-slate-200 flex flex-wrap gap-4 justify-between items-center no-print">
+        <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-teal-500 rounded-full animate-ping"></div>
+            <span class="text-xs md:text-sm font-medium text-slate-700">
+                💡 <strong>คำแนะนำ:</strong> คลิกช่องรูปภาพต่าง ๆ เพื่ออัปโหลดรูปภาพจริงเข้าเครื่องได้ทันที!
+            </span>
+        </div>
+        <button onclick="window.print()" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-header font-semibold text-sm rounded-lg hover:from-blue-700 hover:to-teal-700 transition duration-200 flex items-center gap-2 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            พิมพ์รายงาน / บันทึกเป็น PDF
+        </button>
+    </div>
+
+    <!-- MAIN A4 DOCUMENT -->
+    <div class="a4-page relative p-10 flex flex-col justify-between">
+        
+        <!-- ================= BACKGROUND GRAPHICS (SVGs) ================= -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <!-- Modern Tech Grid background pattern -->
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" opacity="0.02">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#000000" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+
+            <!-- Top Right Science Tech Wave Graph -->
+            <svg class="absolute top-0 right-0 w-[450px] h-[450px]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.12">
+                <path d="M150 0C250 100 300 50 400 150C500 250 450 380 500 500H500V0H150Z" fill="url(#paint0_linear)"/>
+                <defs>
+                    <linearGradient id="paint0_linear" x1="500" y1="0" x2="250" y2="250" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#0284c7"/>
+                        <stop offset="1" stop-color="#0f172a" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <!-- Decorative Hexagonal structures top right -->
+            <g transform="translate(420, 40)" stroke="#1e40af" stroke-width="1.5" fill="none" opacity="0.15">
+                <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                <polygon points="120,52 180,52 210,104 180,156 120,156 90,104" />
+                <circle cx="90" cy="104" r="5" fill="#0d9488" />
+                <circle cx="120" cy="52" r="4" fill="#d97706" />
+            </g>
+
+            <!-- Bottom Left Tech Curve Pattern -->
+            <svg class="absolute bottom-0 left-0 w-[350px] h-[350px]" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.1">
+                <path d="M0 150C100 220 80 300 200 350C320 400 350 380 400 400H0V150Z" fill="url(#paint1_linear)"/>
+                <defs>
+                    <linearGradient id="paint1_linear" x1="0" y1="400" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#0d9488"/>
+                        <stop offset="1" stop-color="#1e3a8a" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <!-- Atomic Structure Icon (Bottom Left Corner) -->
+            <g transform="translate(40, 960)" stroke="#0d9488" stroke-width="1.2" fill="none" opacity="0.2">
+                <ellipse cx="60" cy="60" rx="55" ry="18" transform="rotate(30, 60, 60)" />
+                <ellipse cx="60" cy="60" rx="55" ry="18" transform="rotate(150, 60, 60)" />
+                <ellipse cx="60" cy="60" rx="55" ry="18" transform="rotate(90, 60, 60)" />
+                <circle cx="60" cy="60" r="10" fill="#1e3a8a" stroke="none" />
+                <circle cx="107" cy="87" r="3.5" fill="#d97706" stroke="none" />
+                <circle cx="13" cy="33" r="3.5" fill="#0284c7" stroke="none" />
+            </g>
+        </div>
+
+        <!-- ================= HEADER SECTION ================= -->
+        <header class="relative z-10 flex flex-col items-center text-center">
+            
+            <!-- School Crest / Logo Frame with automatic fallback -->
+            <div class="mb-3 relative">
+                <div class="absolute inset-0 bg-blue-500 rounded-full blur-md opacity-25"></div>
+                <!-- Interactive Logo Holder -->
+                <div class="relative w-20 h-20 rounded-full bg-white border-2 border-amber-400 flex items-center justify-center p-1.5 shadow-md overflow-hidden">
+                    <img id="school-logo" src="https://www.weerawat.ac.th/web/images/pic2561/logo%20wt.png" 
+                         alt="โลโก้โรงเรียนวีรวัฒน์โยธิน" 
+                         class="w-full h-full object-contain"
+                         onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
+                    
+                    <!-- Fallback SVG in case the live school URL fails to load -->
+                    <div id="logo-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-tr from-blue-900 via-indigo-950 to-teal-900 flex items-center justify-center text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-2xl md:text-3xl font-bold font-header tracking-wide bg-gradient-to-r from-blue-950 via-indigo-900 to-teal-950 bg-clip-text text-transparent">
+                กิจกรรมเสริมประสบการณ์ห้องเรียนพิเศษ SME ม.ต้น
+            </h1>
+            
+            <p class="mt-1 text-sm md:text-base font-semibold text-slate-600 tracking-wide">
+                ภาคเรียนที่ 1 ปีการศึกษา 2569
+            </p>
+
+            <div class="mt-2 flex items-center justify-center gap-2">
+                <span class="h-[2px] w-12 bg-gradient-to-r from-transparent to-amber-500 rounded"></span>
+                <span class="text-xs md:text-sm font-semibold font-header text-amber-600 uppercase tracking-wider">โรงเรียนวีรวัฒน์โยธิน สพม.สุรินทร์</span>
+                <span class="h-[2px] w-12 bg-gradient-to-l from-transparent to-amber-500 rounded"></span>
+            </div>
+        </header>
+
+        <!-- ================= TIMELINE & TARGET GROUPS SECTION ================= -->
+        <section class="relative z-10 my-4">
+            <div class="grid grid-cols-12 gap-4 items-stretch">
+                
+                <!-- Date Badge Container -->
+                <div class="col-span-4 bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl p-3 text-white shadow-md border-l-4 border-amber-500 flex flex-col justify-center items-center text-center">
+                    <span class="text-[10px] font-header tracking-wider uppercase opacity-85 text-amber-400 font-bold">บันทึกกิจกรรม</span>
+                    <span class="text-sm font-bold font-header mt-0.5">ประจำวันที่</span>
+                    <span class="text-base font-bold font-header text-emerald-400 mt-0.5">29 พฤษภาคม 2569</span>
+                </div>
+
+                <!-- Classes info boxes -->
+                <div class="col-span-8 grid grid-cols-2 gap-3">
+                    <!-- Class 1 -->
+                    <div class="bg-teal-50/60 backdrop-blur border border-teal-200/60 rounded-2xl p-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
+                            <span class="font-header font-bold text-sm">M.1</span>
+                        </div>
+                        <div>
+                            <p class="text-[11px] font-semibold text-teal-800 leading-tight">ชั้นมัธยมศึกษาปีที่ 1/1</p>
+                            <p class="text-sm font-bold text-slate-800 font-header mt-0.5">ห้องเรียน 326</p>
+                        </div>
+                    </div>
+
+                    <!-- Class 2 -->
+                    <div class="bg-blue-50/60 backdrop-blur border border-blue-200/60 rounded-2xl p-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-700 flex items-center justify-center text-white shadow-sm flex-shrink-0">
+                            <span class="font-header font-bold text-sm">M.3</span>
+                        </div>
+                        <div>
+                            <p class="text-[11px] font-semibold text-blue-800 leading-tight">ชั้นมัธยมศึกษาปีที่ 3/1</p>
+                            <p class="text-sm font-bold text-slate-800 font-header mt-0.5">ห้องเรียน 327</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= ACTIVITY IMAGE GRID (DYNAMIC ASYMMETRIC GRID - 6 PLACES) ================= -->
+        <main class="relative z-10 flex-grow grid grid-cols-3 grid-rows-3 gap-3.5 my-2 items-stretch">
+            
+            <!-- PHOTO 1: Featured Large (Spans 2 rows, 2 columns) -->
+            <div class="col-span-2 row-span-2 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-4" onclick="triggerUpload(1)">
+                <input type="file" id="file-input-1" class="hidden" accept="image/*" onchange="previewImage(event, 1)">
+                <img id="preview-1" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 1">
+                
+                <div id="placeholder-content-1" class="text-center transition-opacity duration-300 z-10">
+                    <div class="mx-auto w-12 h-12 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-sm font-bold text-slate-600 group-hover:text-blue-600 font-header">คลิกเพื่อเพิ่มภาพไฮไลท์หลัก (1)</p>
+                    <p class="text-xs text-slate-400 mt-1">ภาพขนาดใหญ่พิเศษเพื่อโชว์ผลงานโดดเด่น</p>
+                </div>
+            </div>
+
+            <!-- PHOTO 2: Standard (Col 3, Row 1) -->
+            <div class="col-span-1 row-span-1 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-2" onclick="triggerUpload(2)">
+                <input type="file" id="file-input-2" class="hidden" accept="image/*" onchange="previewImage(event, 2)">
+                <img id="preview-2" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 2">
+                
+                <div id="placeholder-content-2" class="text-center transition-opacity duration-300 z-10 p-1">
+                    <div class="mx-auto w-8 h-8 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-[11px] font-semibold text-slate-500 group-hover:text-blue-600 font-header">เพิ่มภาพกิจกรรม (2)</p>
+                </div>
+            </div>
+
+            <!-- PHOTO 3: Standard (Col 3, Row 2) -->
+            <div class="col-span-1 row-span-1 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-2" onclick="triggerUpload(3)">
+                <input type="file" id="file-input-3" class="hidden" accept="image/*" onchange="previewImage(event, 3)">
+                <img id="preview-3" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 3">
+                
+                <div id="placeholder-content-3" class="text-center transition-opacity duration-300 z-10 p-1">
+                    <div class="mx-auto w-8 h-8 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-[11px] font-semibold text-slate-500 group-hover:text-blue-600 font-header">เพิ่มภาพกิจกรรม (3)</p>
+                </div>
+            </div>
+
+            <!-- PHOTO 4: Standard (Col 1, Row 3) -->
+            <div class="col-span-1 row-span-1 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-2" onclick="triggerUpload(4)">
+                <input type="file" id="file-input-4" class="hidden" accept="image/*" onchange="previewImage(event, 4)">
+                <img id="preview-4" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 4">
+                
+                <div id="placeholder-content-4" class="text-center transition-opacity duration-300 z-10 p-1">
+                    <div class="mx-auto w-8 h-8 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-[11px] font-semibold text-slate-500 group-hover:text-blue-600 font-header">เพิ่มภาพกิจกรรม (4)</p>
+                </div>
+            </div>
+
+            <!-- PHOTO 5: Standard (Col 2, Row 3) -->
+            <div class="col-span-1 row-span-1 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-2" onclick="triggerUpload(5)">
+                <input type="file" id="file-input-5" class="hidden" accept="image/*" onchange="previewImage(event, 5)">
+                <img id="preview-5" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 5">
+                
+                <div id="placeholder-content-5" class="text-center transition-opacity duration-300 z-10 p-1">
+                    <div class="mx-auto w-8 h-8 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-[11px] font-semibold text-slate-500 group-hover:text-blue-600 font-header">เพิ่มภาพกิจกรรม (5)</p>
+                </div>
+            </div>
+
+            <!-- PHOTO 6: Standard (Col 3, Row 3) -->
+            <div class="col-span-1 row-span-1 relative group rounded-2xl overflow-hidden bg-slate-100 border-2 border-dashed border-slate-300 hover:border-blue-500 transition-all duration-300 shadow-md cursor-pointer flex flex-col items-center justify-center p-2" onclick="triggerUpload(6)">
+                <input type="file" id="file-input-6" class="hidden" accept="image/*" onchange="previewImage(event, 6)">
+                <img id="preview-6" class="absolute inset-0 w-full h-full object-cover hidden rounded-xl" alt="Activity Image 6">
+                
+                <div id="placeholder-content-6" class="text-center transition-opacity duration-300 z-10 p-1">
+                    <div class="mx-auto w-8 h-8 rounded-full bg-slate-200 group-hover:bg-blue-100 flex items-center justify-center text-slate-500 group-hover:text-blue-600 transition mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-[11px] font-semibold text-slate-500 group-hover:text-blue-600 font-header">เพิ่มภาพกิจกรรม (6)</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ================= DECORATIVE FOOTER ACCENT ================= -->
+        <footer class="relative z-10 mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-slate-400 text-[10px] font-medium tracking-wide">
+            <div class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>
+                <span>Science • Math • Education Project</span>
+            </div>
+            <div>
+                <span>โรงเรียนวีรวัฒน์โยธิน สังกัดสำนักงานเขตพื้นที่การศึกษามัธยมศึกษาสุรินทร์</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Interactive script to handle photo previews -->
+    <script>
+        function triggerUpload(index) {
+            document.getElementById(`file-input-${index}`).click();
+        }
+
+        function previewImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById(`preview-${index}`);
+                    const placeholder = document.getElementById(`placeholder-content-${index}`);
+                    
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    placeholder.classList.add('opacity-0', 'pointer-events-none');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
