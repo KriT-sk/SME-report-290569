@@ -19,17 +19,30 @@
         .font-header {
             font-family: 'Kanit', sans-serif;
         }
-        /* A4 Page Styling for Web Preview */
+        
+        /* A4 Page Container for Responsive Scaling */
+        .a4-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+            padding: 1rem;
+        }
+
+        /* A4 Page Styling */
         .a4-page {
             width: 210mm;
             height: 297mm;
             position: relative;
             background: linear-gradient(135deg, #f5f3ff 0%, #e0f2fe 50%, #f0fdf4 100%);
             box-shadow: 0 15px 35px rgba(30, 41, 59, 0.15);
-            margin: 0 auto;
-            overflow: hidden;
+            flex-shrink: 0;
+            transform-origin: top center;
             box-sizing: border-box;
+            transition: transform 0.2s ease-out;
         }
+
         /* Soft Colorful Glows */
         .glow-orb-1 {
             background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(139, 92, 246, 0) 70%);
@@ -48,11 +61,17 @@
                 margin: 0;
                 padding: 0;
             }
+            .a4-container {
+                padding: 0;
+                overflow: visible;
+            }
             .a4-page {
                 box-shadow: none !important;
                 margin: 0 !important;
                 width: 210mm !important;
                 height: 297mm !important;
+                transform: none !important;
+                margin-bottom: 0 !important;
                 page-break-after: always;
                 print-color-adjust: exact;
                 -webkit-print-color-adjust: exact;
@@ -60,199 +79,236 @@
         }
     </style>
 </head>
-<body class="py-8 no-scrollbar flex items-center justify-center min-h-screen">
+<body class="min-h-screen no-scrollbar flex items-center justify-center">
 
-    <!-- MAIN A4 DOCUMENT -->
-    <div class="a4-page relative p-10 flex flex-col justify-between">
+    <!-- A4 RESPONSIVE CONTAINER -->
+    <div class="a4-container">
         
-        <!-- ================= VIBRANT BACKGROUND ELEMENTS ================= -->
-        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-            <!-- Fluid Glowing Orbs (Vibrant colors) -->
-            <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] glow-orb-1 rounded-full"></div>
-            <div class="absolute bottom-[20%] left-[-15%] w-[450px] h-[450px] glow-orb-2 rounded-full"></div>
-            <div class="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] glow-orb-3 rounded-full"></div>
-
-            <!-- Colorful Hexagon Dots Grid Top Right -->
-            <svg class="absolute top-10 right-10 w-[200px] h-[200px]" opacity="0.35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="1.5" fill="#4f46e5" />
-                <circle cx="30" cy="10" r="1.5" fill="#a855f7" />
-                <circle cx="50" cy="10" r="1.5" fill="#f43f5e" />
-                <circle cx="70" cy="10" r="1.5" fill="#10b981" />
-                <circle cx="90" cy="10" r="1.5" fill="#f59e0b" />
-                <circle cx="20" cy="30" r="1.5" fill="#a855f7" />
-                <circle cx="40" cy="30" r="1.5" fill="#f43f5e" />
-                <circle cx="60" cy="30" r="1.5" fill="#10b981" />
-                <circle cx="80" cy="30" r="1.5" fill="#f59e0b" />
-                <circle cx="30" cy="50" r="1.5" fill="#f43f5e" />
-                <circle cx="50" cy="50" r="1.5" fill="#10b981" />
-                <circle cx="70" cy="50" r="1.5" fill="#f59e0b" />
-            </svg>
-
-            <!-- Creative DNA / Wave Line (Bottom Left) -->
-            <svg class="absolute bottom-10 left-10 w-[250px] h-[100px]" opacity="0.2" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 0,20 C 10,5 15,35 25,20 C 35,5 40,35 50,20 C 60,5 65,35 75,20 C 85,5 90,35 100,20" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M 0,20 C 10,35 15,5 25,20 C 35,35 40,5 50,20 C 60,35 65,5 75,20 C 85,35 90,5 100,20" stroke="#ec4899" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" />
-            </svg>
-
-            <!-- Decorative Chemical Molecule Bottom Right -->
-            <g transform="translate(680, 930)" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.3">
-                <line x1="30" y1="0" x2="60" y2="15" />
-                <line x1="60" y1="15" x2="60" y2="45" />
-                <line x1="60" y1="45" x2="30" y2="60" />
-                <line x1="30" y1="60" x2="0" y2="45" />
-                <line x1="0" y1="45" x2="0" y2="15" />
-                <line x1="0" y1="15" x2="30" y2="0" />
-                <circle cx="30" cy="0" r="4" fill="#a855f7" />
-                <circle cx="60" cy="15" r="4" fill="#f43f5e" />
-                <circle cx="60" cy="45" r="4" fill="#3b82f6" />
-                <circle cx="30" cy="60" r="4" fill="#10b981" />
-            </g>
-        </div>
-
-        <!-- ================= HEADER SECTION ================= -->
-        <header class="relative z-10 flex flex-col items-center text-center">
+        <!-- MAIN A4 DOCUMENT -->
+        <div class="a4-page p-10 flex flex-col justify-between shadow-2xl rounded-sm">
             
-            <!-- Dual Logos: School Logo & SME Logo Side-by-side -->
-            <div class="mb-4 flex items-center justify-center gap-4 relative">
-                <!-- School Logo Container -->
-                <div class="relative">
-                    <div class="absolute inset-[-3px] bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full blur-sm opacity-60 animate-pulse"></div>
-                    <div class="relative w-16 h-16 rounded-full bg-white flex items-center justify-center p-1.5 shadow-md overflow-hidden">
-                        <img id="school-logo" src="https://www.weerawat.ac.th/web/images/pic2561/logo%20wt.png" 
-                             alt="โลโก้โรงเรียนวีรวัฒน์โยธิน" 
-                             class="w-full h-full object-contain">
-                    </div>
-                </div>
+            <!-- ================= VIBRANT BACKGROUND ELEMENTS ================= -->
+            <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                <!-- Fluid Glowing Orbs (Vibrant colors) -->
+                <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] glow-orb-1 rounded-full"></div>
+                <div class="absolute bottom-[20%] left-[-15%] w-[450px] h-[450px] glow-orb-2 rounded-full"></div>
+                <div class="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] glow-orb-3 rounded-full"></div>
 
-                <!-- Decorative link badge -->
-                <div class="h-8 w-8 rounded-lg bg-white/80 border border-slate-200/50 flex items-center justify-center shadow-sm relative z-10">
-                    <span class="text-indigo-600 font-bold text-sm font-header">&</span>
-                </div>
+                <!-- Colorful Hexagon Dots Grid Top Right -->
+                <svg class="absolute top-10 right-10 w-[200px] h-[200px]" opacity="0.35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="1.5" fill="#4f46e5" />
+                    <circle cx="30" cy="10" r="1.5" fill="#a855f7" />
+                    <circle cx="50" cy="10" r="1.5" fill="#f43f5e" />
+                    <circle cx="70" cy="10" r="1.5" fill="#10b981" />
+                    <circle cx="90" cy="10" r="1.5" fill="#f59e0b" />
+                    <circle cx="20" cy="30" r="1.5" fill="#a855f7" />
+                    <circle cx="40" cy="30" r="1.5" fill="#f43f5e" />
+                    <circle cx="60" cy="30" r="1.5" fill="#10b981" />
+                    <circle cx="80" cy="30" r="1.5" fill="#f59e0b" />
+                    <circle cx="30" cy="50" r="1.5" fill="#f43f5e" />
+                    <circle cx="50" cy="50" r="1.5" fill="#10b981" />
+                    <circle cx="70" cy="50" r="1.5" fill="#f59e0b" />
+                </svg>
 
-                <!-- SME Logo Container -->
-                <div class="relative">
-                    <div class="absolute inset-[-3px] bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full blur-sm opacity-60 animate-pulse"></div>
-                    <div class="relative w-16 h-16 rounded-full bg-white flex items-center justify-center p-1.5 shadow-md overflow-hidden">
-                        <img id="sme-logo" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/447082ca2d1c0292b7e1c1d67fb4957b.jpg" 
-                             alt="โลโก้ห้องเรียนพิเศษ SME" 
-                             class="w-full h-full object-cover rounded-full">
-                    </div>
-                </div>
+                <!-- Creative DNA / Wave Line (Bottom Left) -->
+                <svg class="absolute bottom-10 left-10 w-[250px] h-[100px]" opacity="0.2" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0,20 C 10,5 15,35 25,20 C 35,5 40,35 50,20 C 60,5 65,35 75,20 C 85,5 90,35 100,20" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M 0,20 C 10,35 15,5 25,20 C 35,35 40,5 50,20 C 60,35 65,5 75,20 C 85,35 90,5 100,20" stroke="#ec4899" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" />
+                </svg>
+
+                <!-- Decorative Chemical Molecule Bottom Right -->
+                <g transform="translate(680, 930)" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.3">
+                    <line x1="30" y1="0" x2="60" y2="15" />
+                    <line x1="60" y1="15" x2="60" y2="45" />
+                    <line x1="60" y1="45" x2="30" y2="60" />
+                    <line x1="30" y1="60" x2="0" y2="45" />
+                    <line x1="0" y1="45" x2="0" y2="15" />
+                    <line x1="0" y1="15" x2="30" y2="0" />
+                    <circle cx="30" cy="0" r="4" fill="#a855f7" />
+                    <circle cx="60" cy="15" r="4" fill="#f43f5e" />
+                    <circle cx="60" cy="45" r="4" fill="#3b82f6" />
+                    <circle cx="30" cy="60" r="4" fill="#10b981" />
+                </g>
             </div>
 
-            <!-- Header Title with beautiful gradient text -->
-            <h1 class="text-2xl md:text-3xl font-bold font-header tracking-wide bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 bg-clip-text text-transparent">
-                กิจกรรมเสริมประสบการณ์ห้องเรียนพิเศษ SME ม.ต้น
-            </h1>
-            
-            <p class="mt-1 text-sm md:text-base font-bold text-slate-700 tracking-wide">
-                ภาคเรียนที่ 1 ปีการศึกษา 2569
-            </p>
-
-            <div class="mt-2 flex items-center justify-center gap-3">
-                <span class="h-[2px] w-10 bg-gradient-to-r from-transparent to-pink-500 rounded"></span>
-                <span class="text-xs md:text-sm font-bold font-header text-purple-700 tracking-wider">โรงเรียนวีรวัฒน์โยธิน สพม.สุรินทร์</span>
-                <span class="h-[2px] w-10 bg-gradient-to-l from-transparent to-pink-500 rounded"></span>
-            </div>
-        </header>
-
-        <!-- ================= TIMELINE & TARGET GROUPS SECTION ================= -->
-        <section class="relative z-10 my-4">
-            <div class="grid grid-cols-12 gap-4 items-stretch">
+            <!-- ================= HEADER SECTION ================= -->
+            <header class="relative z-10 flex flex-col items-center text-center">
                 
-                <!-- Date Badge Container (Vibrant Theme) -->
-                <div class="col-span-4 bg-gradient-to-br from-indigo-900 via-purple-950 to-pink-950 rounded-2xl p-3 text-white shadow-lg border-l-4 border-pink-500 flex flex-col justify-center items-center text-center">
-                    <span class="text-[10px] font-header tracking-wider uppercase opacity-90 text-pink-400 font-bold">บันทึกกิจกรรม</span>
-                    <span class="text-sm font-bold font-header mt-0.5">ประจำวันที่</span>
-                    <span class="text-base font-bold font-header text-cyan-300 mt-0.5">29 พฤษภาคม 2569</span>
-                </div>
-
-                <!-- Classes info boxes (With soft glassmorphism & colorful glow) -->
-                <div class="col-span-8 grid grid-cols-2 gap-3">
-                    <!-- Class 1 -->
-                    <div class="bg-white/75 backdrop-blur-md border border-purple-200/80 rounded-2xl p-3 flex items-center gap-3 shadow-sm transition">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
-                            <span class="font-header font-bold text-sm">M.1</span>
-                        </div>
-                        <div>
-                            <p class="text-[11px] font-bold text-purple-900 leading-tight">ชั้นมัธยมศึกษาปีที่ 1/1</p>
-                            <p class="text-sm font-bold text-indigo-950 font-header mt-0.5">ห้องเรียน 326</p>
+                <!-- Dual Logos: School Logo & SME Logo Side-by-side -->
+                <div class="mb-4 flex items-center justify-center gap-4 relative">
+                    <!-- School Logo Container -->
+                    <div class="relative">
+                        <div class="absolute inset-[-3px] bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full blur-sm opacity-60"></div>
+                        <div class="relative w-16 h-16 rounded-full bg-white flex items-center justify-center p-1.5 shadow-md overflow-hidden">
+                            <img id="school-logo" src="https://www.weerawat.ac.th/web/images/pic2561/logo%20wt.png" 
+                                 alt="โลโก้โรงเรียนวีรวัฒน์โยธิน" 
+                                 class="w-full h-full object-contain">
                         </div>
                     </div>
 
-                    <!-- Class 2 -->
-                    <div class="bg-white/75 backdrop-blur-md border border-pink-200/80 rounded-2xl p-3 flex items-center gap-3 shadow-sm transition">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
-                            <span class="font-header font-bold text-sm">M.3</span>
-                        </div>
-                        <div>
-                            <p class="text-[11px] font-bold text-pink-900 leading-tight">ชั้นมัธยมศึกษาปีที่ 3/1</p>
-                            <p class="text-sm font-bold text-rose-950 font-header mt-0.5">ห้องเรียน 327</p>
+                    <!-- Decorative link badge -->
+                    <div class="h-8 w-8 rounded-lg bg-white/80 border border-slate-200/50 flex items-center justify-center shadow-sm relative z-10">
+                        <span class="text-indigo-600 font-bold text-sm font-header">&</span>
+                    </div>
+
+                    <!-- SME Logo Container -->
+                    <div class="relative">
+                        <div class="absolute inset-[-3px] bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full blur-sm opacity-60"></div>
+                        <div class="relative w-16 h-16 rounded-full bg-white flex items-center justify-center p-1.5 shadow-md overflow-hidden">
+                            <img id="sme-logo" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/447082ca2d1c0292b7e1c1d67fb4957b.jpg" 
+                                 alt="โลโก้ห้องเรียนพิเศษ SME" 
+                                 class="w-full h-full object-cover rounded-full">
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </section>
+                <!-- Header Title with beautiful gradient text -->
+                <h1 class="text-2xl md:text-3xl font-bold font-header tracking-wide bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 bg-clip-text text-transparent">
+                    กิจกรรมเสริมประสบการณ์ห้องเรียนพิเศษ SME ม.ต้น
+                </h1>
+                
+                <p class="mt-1 text-sm md:text-base font-bold text-slate-700 tracking-wide">
+                    ภาคเรียนที่ 1 ปีการศึกษา 2569
+                </p>
 
-        <!-- ================= ACTIVITY IMAGE GRID (DYNAMIC ASYMMETRIC GRID - 6 PLACES) ================= -->
-        <main class="relative z-10 flex-grow grid grid-cols-3 grid-rows-3 gap-3.5 my-2 items-stretch">
-            
-            <!-- PHOTO 1: Featured Large (Spans 2 rows, 2 columns) -->
-            <div class="col-span-2 row-span-2 relative group rounded-3xl p-1.5 bg-white/80 border border-white/60 shadow-[0_10px_25px_-5px_rgba(30,41,59,0.08)] hover:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.2) ] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-2xl">
-                    <img id="preview-1" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/c857ce5b5faf1a10057ad8643589bd69.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 1">
+                <div class="mt-2 flex items-center justify-center gap-3">
+                    <span class="h-[2px] w-10 bg-gradient-to-r from-transparent to-pink-500 rounded"></span>
+                    <span class="text-xs md:text-sm font-bold font-header text-purple-700 tracking-wider">โรงเรียนวีรวัฒน์โยธิน สพม.สุรินทร์</span>
+                    <span class="h-[2px] w-10 bg-gradient-to-l from-transparent to-pink-500 rounded"></span>
                 </div>
-            </div>
+            </header>
 
-            <!-- PHOTO 2: Standard (Col 3, Row 1) -->
-            <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-xl">
-                    <img id="preview-2" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/b39bf5c1134d21e2999eef0083e48615.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 2">
+            <!-- ================= TIMELINE & TARGET GROUPS SECTION ================= -->
+            <section class="relative z-10 my-4">
+                <div class="grid grid-cols-12 gap-4 items-stretch">
+                    
+                    <!-- Date Badge Container (Vibrant Theme) -->
+                    <div class="col-span-4 bg-gradient-to-br from-indigo-900 via-purple-950 to-pink-950 rounded-2xl p-3 text-white shadow-lg border-l-4 border-pink-500 flex flex-col justify-center items-center text-center">
+                        <span class="text-[10px] font-header tracking-wider uppercase opacity-90 text-pink-400 font-bold">บันทึกกิจกรรม</span>
+                        <span class="text-sm font-bold font-header mt-0.5">ประจำวันที่</span>
+                        <span class="text-base font-bold font-header text-cyan-300 mt-0.5">29 พฤษภาคม 2569</span>
+                    </div>
+
+                    <!-- Classes info boxes (With soft glassmorphism & colorful glow) -->
+                    <div class="col-span-8 grid grid-cols-2 gap-3">
+                        <!-- Class 1 -->
+                        <div class="bg-white/75 backdrop-blur-md border border-purple-200/80 rounded-2xl p-3 flex items-center gap-3 shadow-sm transition">
+                            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                                <span class="font-header font-bold text-sm">M.1</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-purple-900 leading-tight">ชั้นมัธยมศึกษาปีที่ 1/1</p>
+                                <p class="text-sm font-bold text-indigo-950 font-header mt-0.5">ห้องเรียน 326</p>
+                            </div>
+                        </div>
+
+                        <!-- Class 2 -->
+                        <div class="bg-white/75 backdrop-blur-md border border-pink-200/80 rounded-2xl p-3 flex items-center gap-3 shadow-sm transition">
+                            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                                <span class="font-header font-bold text-sm">M.3</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-pink-900 leading-tight">ชั้นมัธยมศึกษาปีที่ 3/1</p>
+                                <p class="text-sm font-bold text-rose-950 font-header mt-0.5">ห้องเรียน 327</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            </section>
 
-            <!-- PHOTO 3: Standard (Col 3, Row 2) -->
-            <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-xl">
-                    <img id="preview-3" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/43311f13d3538b9a745c1935f2e704c1.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 3">
+            <!-- ================= ACTIVITY IMAGE GRID (DYNAMIC ASYMMETRIC GRID - 6 PLACES) ================= -->
+            <main class="relative z-10 flex-grow grid grid-cols-3 grid-rows-3 gap-3.5 my-2 items-stretch">
+                
+                <!-- PHOTO 1: Featured Large (Spans 2 rows, 2 columns) -->
+                <div class="col-span-2 row-span-2 relative group rounded-3xl p-1.5 bg-white/80 border border-white/60 shadow-[0_10px_25px_-5px_rgba(30,41,59,0.08)] hover:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.2)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-2xl">
+                        <img id="preview-1" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/c857ce5b5faf1a10057ad8643589bd69.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 1">
+                    </div>
                 </div>
-            </div>
 
-            <!-- PHOTO 4: Standard (Col 1, Row 3) -->
-            <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-xl">
-                    <img id="preview-4" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/9c7bd741e724856390ec9ba346fb9f01.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 4">
+                <!-- PHOTO 2: Standard (Col 3, Row 1) -->
+                <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-xl">
+                        <img id="preview-2" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/b39bf5c1134d21e2999eef0083e48615.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 2">
+                    </div>
                 </div>
-            </div>
 
-            <!-- PHOTO 5: Standard (Col 2, Row 3) -->
-            <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-xl">
-                    <img id="preview-5" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/2468699dcd63e5bb2cb0895f71673cda.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 5">
+                <!-- PHOTO 3: Standard (Col 3, Row 2) -->
+                <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-xl">
+                        <img id="preview-3" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/43311f13d3538b9a745c1935f2e704c1.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 3">
+                    </div>
                 </div>
-            </div>
 
-            <!-- PHOTO 6: Standard (Col 3, Row 3) -->
-            <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="w-full h-full relative overflow-hidden rounded-xl">
-                    <img id="preview-6" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/e0cdb98c8bf8b679dcb4834974185016.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 6">
+                <!-- PHOTO 4: Standard (Col 1, Row 3) -->
+                <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-xl">
+                        <img id="preview-4" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/9c7bd741e724856390ec9ba346fb9f01.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 4">
+                    </div>
                 </div>
-            </div>
 
-        </main>
+                <!-- PHOTO 5: Standard (Col 2, Row 3) -->
+                <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-xl">
+                        <img id="preview-5" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/2468699dcd63e5bb2cb0895f71673cda.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 5">
+                    </div>
+                </div>
 
-        <!-- ================= DECORATIVE FOOTER ACCENT ================= -->
-        <footer class="relative z-10 mt-4 pt-3 border-t border-purple-200/50 flex justify-between items-center text-slate-500 text-[10px] font-semibold tracking-wide">
-            <div class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></span>
-                <span class="text-indigo-950 font-header">Science • Mathematics • English Program</span>
-            </div>
-            <div>
-                <span class="text-slate-600 font-header">โรงเรียนวีรวัฒน์โยธิน สังกัดสำนักงานเขตพื้นที่การศึกษามัธยมศึกษาสุรินทร์</span>
-            </div>
-        </footer>
+                <!-- PHOTO 6: Standard (Col 3, Row 3) -->
+                <div class="col-span-1 row-span-1 relative group rounded-2xl p-1 bg-white/80 border border-white/60 shadow-[0_8px_20px_-5px_rgba(30,41,59,0.06)] hover:shadow-[0_12px_25px_-5px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col items-center justify-center">
+                    <div class="w-full h-full relative overflow-hidden rounded-xl">
+                        <img id="preview-6" src="https://wtsale.my.canva.site/science-mathematics-and-english/_assets/media/e0cdb98c8bf8b679dcb4834974185016.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Activity Image 6">
+                    </div>
+                </div>
 
+            </main>
+
+            <!-- ================= DECORATIVE FOOTER ACCENT ================= -->
+            <footer class="relative z-10 mt-4 pt-3 border-t border-purple-200/50 flex justify-between items-center text-slate-500 text-[10px] font-semibold tracking-wide">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></span>
+                    <span class="text-indigo-950 font-header">Science • Mathematics • English Program</span>
+                </div>
+                <div>
+                    <span class="text-slate-600 font-header">โรงเรียนวีรวัฒน์โยธิน สังกัดสำนักงานเขตพื้นที่การศึกษามัธยมศึกษาสุรินทร์</span>
+                </div>
+            </footer>
+
+        </div>
     </div>
+
+    <!-- RESPONSIVE AUTO-SCALING SCRIPT -->
+    <script>
+        function scaleA4() {
+            const page = document.querySelector('.a4-page');
+            const container = document.querySelector('.a4-container');
+            if (!page || !container) return;
+
+            const containerWidth = container.clientWidth;
+            
+            // Width & Height of A4 in pixels at standard ratio
+            const targetWidth = 793.7; // ~210mm at standard web scale
+            const targetHeight = 1122.5; // ~297mm at standard web scale
+
+            if (containerWidth < targetWidth) {
+                // Scale down perfectly for mobile viewports
+                const scaleValue = (containerWidth - 32) / targetWidth; // 32px padding offset
+                page.style.transform = `scale(${scaleValue})`;
+                // Compensate the height collapse to prevent empty spaces beneath the scaled document
+                container.style.height = `${targetHeight * scaleValue + 32}px`;
+            } else {
+                // Restore standard A4 scale on desktop
+                page.style.transform = 'none';
+                container.style.height = 'auto';
+            }
+        }
+
+        // Run scaling on window load and resizing
+        window.addEventListener('resize', scaleA4);
+        window.addEventListener('load', scaleA4);
+        // Run immediately to prevent sudden layout shifts
+        scaleA4();
+    </script>
 </body>
 </html>
